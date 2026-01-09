@@ -108,3 +108,25 @@ classDiagram
     Hechizo o-- TipoHechizo
     Monstro o-- TipoMonstro
 ```
+## Ampliaciones y Mejoras.
+
+Inicialmente para ampliar el juego y mejorarlo se debe de replantear enteramente el flujo del programa, teniendo en cuenta que un ORM no es la herramienta mas adecuada para la gestión de un juego. 
+
+### Patrones a implementar
+
+Uno de los primeros patrones a implementar es el [patrón de diseño de estado](https://refactoring.guru/design-patterns/state). Un patrón de diseño que permitirá manejar el estado del juego. Un sencillo diagrama explicativo:
+
+```mermaid
+flowchart LR
+    A(Inicio)--> B{Seleccion de turno}
+    B --> C(Turno A)
+    C --> D(Turno B)
+    D --> C
+    D --> E(Fin del juego)
+```
+
+De esta manera se puede controlar bien el estado del juego y se evita comportamiento indefinido. Además de que habilita la posiblidad de expansión a otros tipos de estados. 
+
+### Jerarquia y abstracción
+
+Deberia de abstraerse las clases `Monstro`, `Dragon` y `Mago` a una superclase con atributos comunes e interfaces requeridas.
